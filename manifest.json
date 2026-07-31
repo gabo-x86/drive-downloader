@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Drive Downloader",
+  "version": "1.0.0",
+  "description": "Capture workspacevideo-pa responses and download videos at your desired quality.",
+  "permissions": [
+    "storage",
+    "downloads"
+  ],
+  "host_permissions": [
+    "*://drive.google.com/*",
+    "*://clients6.google.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://drive.google.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["constants.js", "injected.js"],
+      "matches": ["*://drive.google.com/*"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  }
+}
